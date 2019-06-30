@@ -299,6 +299,76 @@ function clickHandler ( event ) {
 createStructureData()
 createElements()
 
+// hw-07-03 var-03 (пробуем через лиссенер)
+// Условия предыдущего задания изменить так:
+// var collection = []
+// function enter ( event ) {}
+// function leave ( event ) {}
+// function clickHandler ( event ) {}
+// [ 1, 2, 3, 4, 5, 6, 7 ].forEach ()
+// :warning: при удалении элемента его потомки должны оставаться
+// --------------------
+
+var body = document.body
+while ( body.firstChild ) body.removeChild( body.firstChild )
+var setBodyStyle = function( e ){
+    e.style = `max-width: 800px;
+            margin: 0 auto;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center; 
+            align-items: center;`    
+}
+setBodyStyle ( body )
+
+var len = 300
+function createElements(){
+   [ 1, 2, 3, 4, 5, 6, 7 ].forEach (
+        function ( item, index, arr ) { 
+            elem = body.firstChild === null 
+                    ? body.appendChild( document.createElement( 'div' )) 
+                        : elem.appendChild( document.createElement( 'div' ))
+            currentLen = len - len / arr.length * index
+            elem.style = `display: flex;
+                          justify-content: center; 
+                          align-items: center;
+                          background-color: #ff00ff50;
+                          border: dotted 1px yellow;
+                          width: ${currentLen}px;
+                          height: ${currentLen}px`
+            elem.title = item 
+            addListeners(elem)                         
+        }
+    )    
+}
+function deleteElement ( elem ) {
+    parentElement = elem.parentElement
+    elem.removeEventListener(event.type, myEvents)
+    parentElement.removeChild( elem )
+    elem.firstChild !== null 
+        ?parentElement.appendChild( elem.firstChild )
+            : null           
+}
+function addListeners(elem){
+['click', 'mouseout', 'mouseover'].forEach (
+                function ( item ) {
+                    elem.addEventListener( item, myEvents )    
+                }
+            )    
+}
+function myEvents ( event ) {
+    event.stopPropagation()
+    event.type === 'click' ? deleteElement ( this ) : null
+    this.style.backgroundColor = '#ff00ff50'
+    event.type === 'mouseover' ? this.style.backgroundColor = '#ffff0050' : null
+}
+createElements()
+
+
+
+
+
+
 
 
 
