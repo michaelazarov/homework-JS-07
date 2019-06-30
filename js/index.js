@@ -110,7 +110,7 @@ var setBodyStyle = function( e ){
             margin: 0 auto;
             font-family: sans-serif;
             display: flex;
-            justify-content: center; 
+            justify-content: center;
             align-items: center;`    
 }
 setBodyStyle ( body )
@@ -122,11 +122,10 @@ function createElements(){
         function ( item, index, arr ) { 
             elem = body.firstChild === null 
                     ? body.appendChild( document.createElement( collection[index] )) 
-                        : elem.appendChild( document.createElement( collection[index] ))
-            item.elem = elem 
+                        : elem.appendChild( document.createElement( collection[index] ))           
             currentLen = len - len / arr.length * index
             elem.style = `display: flex;
-                          justify-content: center; 
+                          justify-content: center;
                           align-items: center;
                           background-color: #ff00ff50;
                           border: dotted 1px yellow;
@@ -144,17 +143,20 @@ function deleteElement ( elem ) {
 }
 function over ( event ) {
     event.stopPropagation()
-    event.target.style.backgroundColor = '#ffff0050'
+    this.style.backgroundColor = '#ffff0050'
 }
 function out ( event ) {
     event.stopPropagation()
-    event.target.style.backgroundColor = '#ff00ff50'
+    this.style.backgroundColor = '#ff00ff50'
 }
 function clickHandler ( event ) {
     event.stopPropagation()
-    deleteElement ( event.target )
+    deleteElement ( this )
 }
 createElements()
+
+
+
 
 // hw-07-03 var-01 (убрал collection)---------------------------
 // Условия предыдущего задания изменить так:
@@ -185,7 +187,6 @@ function createElements(){
             elem = body.firstChild === null 
                     ? body.appendChild( document.createElement( 'div' )) 
                         : elem.appendChild( document.createElement( 'div' ))
-            item.elem = elem 
             currentLen = len - len / arr.length * index
             elem.style = `display: flex;
                           justify-content: center; 
@@ -211,17 +212,18 @@ function deleteElement ( elem ) {
 }
 function over ( event ) {
     event.stopPropagation()
-    event.target.style.backgroundColor = '#ffff0050'
+    this.style.backgroundColor = '#ffff0050'
 }
 function out ( event ) {
     event.stopPropagation()
-    event.target.style.backgroundColor = '#ff00ff50'
+    this.style.backgroundColor = '#ff00ff50'
 }
 function clickHandler ( event ) {
     event.stopPropagation()
-    deleteElement ( event.target )
+    deleteElement ( this )
 }
 createElements()
+
 
 
 // hw-07-03 var-02 (для разнообразия, чтоб скучно не было)------
@@ -263,7 +265,6 @@ function createElements(){
             elem = body.firstChild === null 
                     ? body.appendChild( document.createElement( 'div' )) 
                         : elem.appendChild( document.createElement( 'div' ))
-            item.elem = elem 
             elem.style = `display: flex;
                           justify-content: center; 
                           align-items: center;
@@ -284,15 +285,15 @@ function deleteElement ( elem ) {
 }
 function over ( event ) {
     event.stopPropagation()
-    event.target.style.backgroundColor = '#ffff0050'
+    this.style.backgroundColor = '#ffff0050'
 }
 function out ( event ) {
     event.stopPropagation()
-    event.target.style.backgroundColor = '#ff00ff50'
+    this.style.backgroundColor = '#ff00ff50'
 }
 function clickHandler ( event ) {
     event.stopPropagation()
-    deleteElement ( event.target )
+    deleteElement ( this )
     createElements()
 }
 createStructureData()
