@@ -202,13 +202,20 @@ function createElements(){
         }
     )    
 }
+// function deleteElement ( elem ) {
+//     firstChild = elem.firstChild
+//     parentElement = elem.parentElement
+//     parentElement.removeChild( elem )
+//     firstChild !== null 
+//         ?parentElement.appendChild( firstChild )
+//             : null           
+// }
 function deleteElement ( elem ) {
     firstChild = elem.firstChild
     parentElement = elem.parentElement
-    parentElement.removeChild( elem )
     firstChild !== null 
-        ?parentElement.appendChild( firstChild )
-            : null           
+        ?parentElement.replaceChild( firstChild, elem)
+            : parentElement.removeChild( elem )  
 }
 function over ( event ) {
     event.stopPropagation()
