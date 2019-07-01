@@ -231,8 +231,6 @@ function clickHandler ( event ) {
 }
 createElements()
 
-
-
 // hw-07-03 var-02 (для разнообразия, чтоб скучно не было)------
 // Условия предыдущего задания изменить так:
 // var collection = []
